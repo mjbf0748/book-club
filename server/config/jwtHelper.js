@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 
+// Consume JWT token
 module.exports.verifyJwtToken = (req, res, next) => {
     var token;
     if ('authorization' in req.headers)

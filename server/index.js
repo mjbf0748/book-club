@@ -1,5 +1,5 @@
 require('./config/config'); // execute environment configuration 
-require('./config/passportConfig');
+require('./config/passportConfig'); // passport auth configuration
 const express = require('express'); // using package
 const bodyParser = require('body-parser'); // using package to send json data
 const cors = require('cors'); // using package to communicate between appropriate ports
