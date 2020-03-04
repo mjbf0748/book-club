@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h1>My Favorite Books</h1>
+  </div>
+  <div class="col justify-content-center row search">
+    <mat-form-field class="full-width">
+      <mat-label>Search Title</mat-label>
+      <input matInput name="Title" placeholder="(e.g. Book Title)" required>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Search Author</mat-label>
+      <input matInput name="Author" placeholder="(e.g. Author)" required>
+    </mat-form-field>
+  </div>
+
+
+  <div class="books row">
+    <div class="col-sm col-lg-3 col-xl-2 book" *ngFor="let book of userBooks">
+      <mat-card class="col-sm book-card">
+        <div class="col-sm">
+          <div class="col cover">
+            <img src="../../assets/book-cover.jpg">
+          </div>
+          <div class="col details">
+            <div class="detail">
+              Title: {{book.title}}
+            </div>
+            <div class="detail">
+              Author: {{book.author}}
+           </div>
+          </div>
+          <div class="col">
+            <button  (click)="editBook(book)" mat-raised-button color="primary">Edit Book</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <div class="col add">
+    <button id="add-button" (click)="onAdd()" mat-fab color="primary">+</button>
+  </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+.register-card {
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  width: 30vw;
+}
+
+.register-form {
+  text-align: center;
+  min-width: 150px;
+  max-width: 500px;
+  width: 70%;
+}
+
+.full-width{
+  left: 10%;
+  width: 100%;
+}

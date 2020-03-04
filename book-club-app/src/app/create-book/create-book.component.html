@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5">
+      <form #bookForm="ngForm" >
+        <div class="col">
+          <input type="hidden" name="email" #email="ngModel" [(ngModel)]="userEmail">
+        </div>
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>Title</mat-label>
+            <input matInput type="text" name="title" #title="ngModel" [(ngModel)]="bookService.selectedBook.title">
+          </mat-form-field>
+        </div>
+    <br>
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>Author</mat-label>
+            <input matInput type="text" name="author" #author="ngModel" [(ngModel)]="bookService.selectedBook.author">
+          </mat-form-field>
+        </div>
+    <br>
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>Nummber of Pages</mat-label>
+            <input matInput type="text" name="pages" #pages="ngModel" [(ngModel)]="bookService.selectedBook.pages">
+          </mat-form-field>
+        </div>
+    <br>
+        <div class="col">
+          <input type="file">
+        </div>
+        <div class="col buttons">
+          <button style="margin-right: 10%" mat-raised-button color="primary" (click)="onCreate(bookForm)">Add</button>
+          <button mat-raised-button color="accent" (click)="onSearch()">Search</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-sm-7">
+      <mat-form-field appearance="fill">
+        <mat-label>Search</mat-label>
+        <input matInput type="text" [(ngModel)]="searchString">
+      </mat-form-field>
+
+      <div class="books">
+        <mat-card *ngFor="let book of books">
+          <div class="row">
+            <div class="col-sm-2 col-lg-3">
+              <img src={{book.cover}}/>
+            </div>
+            <div class="col-sm-5 col-lg-6">
+              <div class="col">Title: {{book.title}}</div>
+              <div class="col">Author: {{book.author}}</div>
+            </div>
+            <div class="col-sm-5 col-lg-3">
+              <button id="search-add-button" color="primary" mat-raised-button (click)="onAdd(book.title, book.author)">Add</button>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+  </div>
+
+</div>

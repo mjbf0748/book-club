@@ -1,0 +1,153 @@
+<div class="container-fluid">
+<div class="row">
+  <div class="col-sm-3 info">
+    <mat-card class="info">
+      <div class="col" style="margin-bottom: 10%;">Goal: </div>
+      <div class="col" style="margin-bottom: 10%;">Number of Books Read: </div>
+      <div class="col" style="margin-bottom: 10%;">Favorite Book: </div>
+      <div class="col" style="margin-bottom: 10%;">Favorite : </div>
+      <div class="col">Club Members:</div>
+      <div class="col">
+        <div class="col members">
+          <mat-nav-list>
+            <mat-list-item><strong>John Smith</strong></mat-list-item>
+            <mat-list-item><strong>John Smith</strong></mat-list-item>
+            <mat-list-item><strong>John Smith</strong></mat-list-item>
+            <mat-list-item><strong>John Smith</strong></mat-list-item>
+          </mat-nav-list>
+        </div>
+      </div>
+
+    </mat-card>
+  </div>
+
+  <div class="col-sm">
+    <div class="col-sm current">
+      <h2>Current Book: </h2>
+
+      <mat-card class="main">
+        <div class="row">
+          <div class="col-sm-3">
+            <img src="../../assets/book-cover.jpg">
+          </div>
+          <div class="tac col-sm-4">
+            <div class="book-info row">
+              Title: <strong>{{currentBook.title}}</strong>
+            </div>
+            <div class="book-info row">
+              Author: <strong>{{currentBook.author}}</strong>
+            </div>
+            <div class="book-info row">
+              Current Page: <strong>157</strong>
+            </div>
+          </div>
+          <div class="buttons col-sm-3">
+            <button class="col" style="margin-bottom: 40%;" (click)="editBook(currentBook)" mat-raised-button color="primary">Edit Book</button>
+            <button class="col"  mat-raised-button color="accent">Complete</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="row">
+      <div class="col-sm last">
+        <h2>Last Book: </h2>
+        <mat-card>
+          <div class="row">
+            <div class="col-lg-2">
+              <img src="../../assets/book-cover.jpg">
+            </div>
+            <div class="tac col-lg-8">
+              <div class="book-info row">
+                Title: <strong>{{lastBook.title}}</strong>
+              </div>
+              <div class="book-info row">
+                Author: <strong>{{lastBook.author}}</strong>
+              </div>
+              <div class="book-info row">
+                Date Completed: <strong>1/1/2020</strong>
+              </div>
+            </div>
+            <div class="col-lg-2">
+              <button (click)="editBook(lastBook)" mat-raised-button color="primary">Edit Book</button>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+
+
+      <div class="col-sm next">
+        <h2>Next Book: </h2>
+        <mat-card>
+          <div class="row">
+            <div class="col-lg-4">
+              <img src="../../assets/book-cover.jpg">
+            </div>
+            <div class="col-lg-3">
+              <h2>Title: {{nextBook.title}}</h2>
+              <h2>Author: {{nextBook.author}}</h2>
+            </div>
+            <div class="col-lg-5">
+              <button class="col" style="margin-bottom: 20%;" mat-raised-button (click)="editBook(nextBook)" color="primary">Edit Book</button>
+              <button class="col" mat-raised-button color="accent">Change Next</button>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+  <!-- <div class="col-md-12 profile">
+        <fa-icon [icon]="faUserCircle" size="lg"></fa-icon>
+      </div>
+
+      <div class="col-md-12 pro-card">
+
+          <mat-card [routerLink]="['/details']" routerLinkActive="router-link-active"  color="primary">
+
+            <mat-card-title>Current Book</mat-card-title>
+            <div class="row">
+            <div class="col-md-3">
+              <img src="../../assets/book-cover.jpg">
+            </div>
+            <div class="col-md-6">
+              <h2>Title: {{userDetails.books[0].title}}</h2>
+              <h2>Author:</h2>
+              <h2>Genre:</h2>
+              <h2>Notes</h2>
+            </div>
+          </div>
+          </mat-card>
+
+
+      </div>
+
+
+    </div>
+
+    <div class="col-md-9 ">
+      <div class="col-md-12 books">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{userDetails.books[0].title}}
+            </mat-panel-title>
+            <mat-panel-description>
+              Favorites
+            </mat-panel-description>
+
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+      </div>
+    </div>
+  </div>
+
+
+</div> -->
+
+
+
+

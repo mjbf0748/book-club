@@ -1,0 +1,36 @@
+<mat-card class="register-card">
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-subtitle>Book Club</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form #for = "ngForm" class="register-form">
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" placeholder="Email" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput #password="ngModel" [(ngModel)]="userService.selectedUser.password"name="password" placeholder="Password" required>
+      </mat-form-field>
+
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="Submit(for)" color="primary">Login</button>
+  </mat-card-actions>
+
+</mat-card>
+
+
+<div class="alert" *ngIf="serverErrorMessages">
+
+</div>
+ <!-- <input type="text" #fullName="ngModel" [(ngModel)]="userService.selectedUser.fullName" placeholder="Full Name" required>
+      <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" placeholder="Email" required>
+      <input type="password" #pasword="ngModel" [(ngModel)]="userService.selectedUser.password" placeholder="Password" required>
+
+      <input type="submit" value="register"> -->
+

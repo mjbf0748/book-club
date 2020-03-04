@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Edit Book</h1>
+  <div class="row">
+    <div class="col-sm-3">
+      <img src="../../assets/book-cover.jpg">
+    </div>
+
+    <div class="col-sm">
+      <h2>Title: {{selectedBook.title}}</h2>
+      <h2>Author: {{selectedBook.author}}</h2>
+    </div>
+  </div>
+  <div class="col notes">
+    <h2>Notes: </h2>
+  </div>
+  <div class="col">
+    <mat-form-field class="full-width" appearance="fill">
+      <textarea matInput [(ngModel)]="selectedBook.notes"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="col">
+    <button mat-raised-button color="primary" (click)="onUpdate(selectedBook)" >Save</button>
+    <button id="delete" mat-raised-button color="accent" (click)="onDelete(selectedBook)">Delete</button>
+  </div>
+
+
+</div>
+

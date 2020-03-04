@@ -1,0 +1,16 @@
+<!-- Navbar to use when user is not logged in -->
+<mdb-navbar *ngIf="!userService.isLoggedIn()" SideClass="navbar navbar-expand-lg navbar-dark indigo" [containerInside]="false">
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a class="navbar-brand" href="#">Book Club</a></mdb-navbar-brand>
+</mdb-navbar>
+
+<!-- Navbar to use when user is logged in -->
+<app-header *ngIf="userService.isLoggedIn()"></app-header>
+
+<!-- Router outlet to handle navigation -->
+<router-outlet (activate)="checkLogIn()" ></router-outlet>
+
+
+
+
+
