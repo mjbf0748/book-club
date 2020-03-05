@@ -12,7 +12,7 @@ export class WelcomeComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
-    document.body.classList.add('bg-img');
+    // verify user is logged in
     if (this.userService.isLoggedIn()) {
       this.router.navigate(['./profile']);
 

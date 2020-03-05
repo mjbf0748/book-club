@@ -21,7 +21,7 @@
     <br>
         <div class="col">
           <mat-form-field appearance="fill">
-            <mat-label>Nummber of Pages</mat-label>
+            <mat-label>Number of Pages</mat-label>
             <input matInput type="text" name="pages" #pages="ngModel" [(ngModel)]="bookService.selectedBook.pages">
           </mat-form-field>
         </div>
@@ -53,7 +53,7 @@
               <div class="col">Author: {{book.author}}</div>
             </div>
             <div class="col-sm-5 col-lg-3">
-              <button id="search-add-button" color="primary" mat-raised-button (click)="onAdd(book.title, book.author)">Add</button>
+              <button id="search-add-button" color="primary" mat-raised-button (click)="onAdd(book.title, book.author, book.cover)">Add</button>
             </div>
           </div>
         </mat-card>

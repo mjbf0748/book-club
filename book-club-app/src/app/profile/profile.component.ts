@@ -51,6 +51,39 @@ export class ProfileComponent implements OnInit {
     this.router.navigateByUrl('/details');
   }
 
+  complete(current, next) {
+    let obj = {
+      book: current,
+      nextBook: next,
+      email: this.userDetails.email
+    }
+
+    this.bookService.complete(obj).subscribe(
+      res => {
+        console.log(res);
+        this.refresh();
+      },
+      err => {}
+    )
+  }
+
+  refresh() {
+    this.userService.getUserProfile().subscribe(
+      res => {
+        console.log(res);
+        this.userDetails = res['user'];
+        this.currentBook = this.userDetails.currentBook;
+        this.lastBook = this.userDetails.lastBook;
+        this.nextBook = this.userDetails.nextBook;
+        this.userBooks = this.userDetails.books;
+
+      },
+      err => {
+
+      }
+    );
+  }
+
   onLogout() {
     this.userService.deleteToken();
     this.router.navigate(['/login']);

@@ -2,10 +2,9 @@
 <div class="row">
   <div class="col-sm-3 info">
     <mat-card class="info">
-      <div class="col" style="margin-bottom: 10%;">Goal: </div>
-      <div class="col" style="margin-bottom: 10%;">Number of Books Read: </div>
+      <div class="col" style="margin-bottom: 10%;">Goal: 20 </div>
       <div class="col" style="margin-bottom: 10%;">Favorite Book: </div>
-      <div class="col" style="margin-bottom: 10%;">Favorite : </div>
+      <div class="col" style="margin-bottom: 10%;">Favorite Author: </div>
       <div class="col">Club Members:</div>
       <div class="col">
         <div class="col members">
@@ -26,9 +25,10 @@
       <h2>Current Book: </h2>
 
       <mat-card class="main">
-        <div class="row">
+        <div *ngIf="!currentBook.title && !currentBook.author"><h1>Start Reading!</h1></div>
+        <div *ngIf="currentBook.title || currentBook.author" class="row">
           <div class="col-sm-3">
-            <img src="../../assets/book-cover.jpg">
+            <img src={{currentBook.coverUrl}}>
           </div>
           <div class="tac col-sm-4">
             <div class="book-info row">
@@ -38,12 +38,12 @@
               Author: <strong>{{currentBook.author}}</strong>
             </div>
             <div class="book-info row">
-              Current Page: <strong>157</strong>
+              Current Page: <strong>{{currentBook.currentPage}}</strong>
             </div>
           </div>
           <div class="buttons col-sm-3">
             <button class="col" style="margin-bottom: 40%;" (click)="editBook(currentBook)" mat-raised-button color="primary">Edit Book</button>
-            <button class="col"  mat-raised-button color="accent">Complete</button>
+            <button class="col"  mat-raised-button (click)="complete(currentBook, nextBook)" color="accent">Complete</button>
           </div>
         </div>
       </mat-card>
@@ -53,11 +53,12 @@
       <div class="col-sm last">
         <h2>Last Book: </h2>
         <mat-card>
-          <div class="row">
+          <div *ngIf="!lastBook.title && !lastBook.author"><h1>Finish a Book!</h1></div>
+          <div *ngIf="lastBook.title || lastBook.author" class="row">
             <div class="col-lg-2">
-              <img src="../../assets/book-cover.jpg">
+              <img src={{lastBook.coverUrl}}>
             </div>
-            <div class="tac col-lg-8">
+            <div class="tac col-lg-5">
               <div class="book-info row">
                 Title: <strong>{{lastBook.title}}</strong>
               </div>
@@ -69,26 +70,32 @@
               </div>
             </div>
             <div class="col-lg-2">
-              <button (click)="editBook(lastBook)" mat-raised-button color="primary">Edit Book</button>
+              <button  (click)="editBook(lastBook)" mat-raised-button color="primary">Edit Book</button>
             </div>
           </div>
         </mat-card>
       </div>
 
 
+
       <div class="col-sm next">
         <h2>Next Book: </h2>
         <mat-card>
-          <div class="row">
+          <div *ngIf="!nextBook.title && !nextBook.author"><h1>Add some books!</h1></div>
+          <div *ngIf="nextBook.title || nextBook.author" class="row">
+            <div class="col-lg-2">
+              <img src={{nextBook.coverUrl}}>
+            </div>
+            <div class="tac col-lg-4">
+              <div class="book-info row">
+                Title: <strong>{{nextBook.title}}</strong>
+              </div>
+              <div class="book-info row">
+                Author: <strong>{{nextBook.author}}</strong>
+              </div>
+            </div>
             <div class="col-lg-4">
-              <img src="../../assets/book-cover.jpg">
-            </div>
-            <div class="col-lg-3">
-              <h2>Title: {{nextBook.title}}</h2>
-              <h2>Author: {{nextBook.author}}</h2>
-            </div>
-            <div class="col-lg-5">
-              <button class="col" style="margin-bottom: 20%;" mat-raised-button (click)="editBook(nextBook)" color="primary">Edit Book</button>
+              <button class="col" style="margin-bottom: 20%; margin-top: 20%;" mat-raised-button (click)="editBook(nextBook)" color="primary">Edit Book</button>
               <button class="col" mat-raised-button color="accent">Change Next</button>
             </div>
           </div>

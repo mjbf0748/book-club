@@ -16,6 +16,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatRadioModule} from '@angular/material/radio';
 
 // Bootstrap
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
@@ -41,6 +42,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {AuthGuard} from './shared/auth/auth.guard';
 import { AuthInterceptor } from './shared/auth/auth.interceptor';
 
+//Pipe
+import {FilterPipe} from './shared/pipes/filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +56,8 @@ import { AuthInterceptor } from './shared/auth/auth.interceptor';
     ProfileComponent,
     MyBooksComponent,
     BookDetailsComponent,
-    CreateBookComponent
+    CreateBookComponent,
+    FilterPipe
   ],
   entryComponents: [CreateBookComponent],
   imports: [
@@ -73,7 +78,9 @@ import { AuthInterceptor } from './shared/auth/auth.interceptor';
     MatListModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatRadioModule,
     FontAwesomeModule
+
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

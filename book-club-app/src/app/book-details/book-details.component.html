@@ -1,13 +1,25 @@
 <div class="container">
   <h1>Edit Book</h1>
   <div class="row">
-    <div class="col-sm-3">
-      <img src="../../assets/book-cover.jpg">
+    <div class="col-sm-4">
+      <img src={{selectedBook.coverUrl}}>
     </div>
 
-    <div class="col-sm">
+    <div class="col-sm-4">
       <h2>Title: {{selectedBook.title}}</h2>
       <h2>Author: {{selectedBook.author}}</h2>
+    </div>
+    <div class="radio col-sm">
+      <label id="example-radio-group-label">Update Status</label>
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        [(ngModel)]="status">
+        <mat-radio-button class="col example-radio-button" *ngFor="let status of statuses" [value]="status">
+          {{status}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <button mat-raised-button (click)="clear()">Clear</button>
     </div>
   </div>
   <div class="col notes">

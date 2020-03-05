@@ -6,8 +6,13 @@
   overflow: hidden;
 }
 
+.title {
+  margin-left: 5%;
+}
+
 .search {
   text-align: center;
+  left: 4%;
 }
 
 .book {
@@ -20,7 +25,14 @@
 
 }
 
+
+#cover {
+  width: 75%;
+  height: 75%
+}
+
 img {
+  font-size: 1vw;
   margin-bottom: 5%;
 }
 
@@ -55,6 +67,7 @@ p {
 
 .cover {
   text-align: center;
+  font-size: 1vw;
 }
 
 .book-card {

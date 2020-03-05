@@ -9,6 +9,7 @@ import {UserService} from '../services/user.service';
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private userService: UserService, private router: Router) {}
 
+  // Identify what pages can be navigated to and set Token
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     if (req.headers.get('NoAuth'))
       return next.handle(req.clone());

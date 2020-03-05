@@ -4,6 +4,14 @@
   left: 10%;
 }
 
+.example-radio-button {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.radio {
+  font-size: 20px;
+}
+
 h1 {
   margin-top: 2em;
 }

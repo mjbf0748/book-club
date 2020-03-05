@@ -11,6 +11,7 @@ export class AuthGuard implements CanActivate {
 
   constructor(private userService: UserService, private router: Router) {}
 
+  // Handle authorization so only logged in users can navigate
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {

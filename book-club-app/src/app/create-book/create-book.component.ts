@@ -67,12 +67,13 @@ export class CreateBookComponent implements OnInit {
     });
    }
 
-   onAdd(title, author) {
+   onAdd(title, author, coverUrl) {
     let book = {email: this.userEmail,
     title: title,
     author: author,
     pages: '',
     notes: '',
+    coverUrl: coverUrl
     }
     this.bookService.createBook(book).subscribe(
       res => {

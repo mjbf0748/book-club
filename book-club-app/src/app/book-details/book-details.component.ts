@@ -13,6 +13,11 @@ export class BookDetailsComponent implements OnInit {
   userDetails;
   userEmail;
   selectedBook;
+  statuses = ["Current", "Next"];
+  status;
+  current: Boolean;
+  next: Boolean;
+  last: Boolean;
 
   constructor(private userService: UserService, private router: Router, private bookService: BookService) { }
 
@@ -24,6 +29,17 @@ export class BookDetailsComponent implements OnInit {
         this.userDetails = res['user'];
         this.userEmail = this.userDetails.email;
         console.log(this.userDetails);
+        this.current = this.userDetails.currentBook.title == this.selectedBook.title;
+        this.next = this.userDetails.nextBook.title == this.selectedBook.title;
+        this.last = this.userDetails.lastBook.title == this.selectedBook.title;
+
+        if (this.current) {
+          this.status = 'Current';
+        }
+
+        if (this.next) {
+          this.status = 'Next';
+        }
       },
       err => {
 
@@ -46,10 +62,33 @@ export class BookDetailsComponent implements OnInit {
         console.log(err);
       }
     );
+    if (this.status == 'Current' || this.current) {
+      this.bookService.updateCurrent(obj).subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+
+        }
+      );
+    }
+
+    if (this.status == 'Next' || this.next) {
+      this.bookService.updateNext(obj).subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+
+        }
+      );
+    }
+
+
   }
 
   onDelete(book) {
-    if (confirm('Are yoou ure you want to delete this book?') == true) {
+    if (confirm('Are you sure you want to delete this book?') == true) {
       let obj = {
         email: this.userEmail,
         title: book.title,
@@ -64,9 +103,48 @@ export class BookDetailsComponent implements OnInit {
         }
       );
 
+      if (this.last) {
+        this.bookService.deleteLast(obj).subscribe(
+          res => {
+            console.log(res);
+          },
+          err => {
+
+          }
+        );
+      }
+
+      if (this.current) {
+        this.bookService.deleteCurrent(obj).subscribe(
+          res => {
+            console.log(res);
+          },
+          err => {
+          }
+        );
+      }
+
+      if (this.next) {
+        this.bookService.deleteNext(obj).subscribe(
+          res => {
+            console.log(res);
+          },
+          err => {
+
+          }
+        );
+      }
+
+
+
       this.router.navigateByUrl('/mybooks');
 
     }
+  }
+
+  clear() {
+
+    this.status = null;
   }
 
 }

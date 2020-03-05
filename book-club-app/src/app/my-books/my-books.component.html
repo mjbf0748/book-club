@@ -1,26 +1,26 @@
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center title">
     <h1>My Favorite Books</h1>
   </div>
   <div class="col justify-content-center row search">
     <mat-form-field class="full-width">
       <mat-label>Search Title</mat-label>
-      <input matInput name="Title" placeholder="(e.g. Book Title)" required>
+      <input matInput name="Title" [(ngModel)]="searchTitle" placeholder="(e.g. Book Title)" >
     </mat-form-field>
 
-    <mat-form-field class="full-width">
+    <!-- <mat-form-field class="full-width">
       <mat-label>Search Author</mat-label>
-      <input matInput name="Author" placeholder="(e.g. Author)" required>
-    </mat-form-field>
+      <input matInput name="Author" [(ngModel)]="searchAuthor" placeholder="(e.g. Author)" >
+    </mat-form-field> -->
   </div>
 
 
   <div class="books row">
-    <div class="col-sm col-lg-3 col-xl-2 book" *ngFor="let book of userBooks">
+    <div class="col-sm col-lg-3 col-xl-2 book" *ngFor="let book of userBooks | filter : searchTitle : searchAuthor">
       <mat-card class="col-sm book-card">
         <div class="col-sm">
           <div class="col cover">
-            <img src="../../assets/book-cover.jpg">
+            <img id="cover" src={{book.coverUrl}}>
           </div>
           <div class="col details">
             <div class="detail">

@@ -5,4 +5,5 @@ export class Book {
   author: string;
   pages: string;
   notes: string;
+  coverUrl: string;
 }

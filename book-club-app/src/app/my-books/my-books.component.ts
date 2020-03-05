@@ -6,6 +6,7 @@ import { BookService } from '../shared/services/book.service';
 import { Book } from '../shared/models/book';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {FilterPipe} from '../shared/pipes/filter.pipe';
 
 @Component({
   selector: 'app-my-books',
@@ -16,6 +17,8 @@ export class MyBooksComponent implements OnInit {
 
   userDetails;
   userBooks: Book[];
+  searchTitle = '';
+  searchAuthor = '';
 
   constructor(private userService: UserService,
     public dialog: MatDialog,
