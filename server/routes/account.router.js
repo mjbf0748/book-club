@@ -9,13 +9,34 @@ const source = new Adlibris();
 
 // // Search for books
 
-
+// Create a book
 router.post('/createBook', ctrlAccount.createBook);
 
+// Update book
 router.put('/update', ctrlAccount.update);
 
+// Update book that is set to current
+router.put('/updateCurrent', ctrlAccount.updateCurrent);
+
+// Update book that is set to next
+router.put('/updateNext', ctrlAccount.updateNext);
+
+// Set current book to complete and move next to current
+router.put('/complete', ctrlAccount.complete);
+
+// Delete a book
 router.put('/delete', ctrlAccount.delete);
 
+//Delete the last book read
+router.put('/deleteLast', ctrlAccount.deleteLast);
+
+// Delete the book set to current book
+router.put('/deleteCurrent', ctrlAccount.deleteCurrent);
+
+//Delete the book set to next
+router.put('/deleteNext', ctrlAccount.deleteNext);
+
+// Search for books
 router.get('/search/:title', (req, res) => {
     let bookArray = [];
     source.search(req.params.title)
@@ -36,44 +57,6 @@ router.get('/search/:title', (req, res) => {
             console.log(books.length)
             //console.log(JSON.stringify(book, null, 2));
         });
-    });
-});
-
-router.get('/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`No record with given id : ${req.params.id}`)
-    
-    User.findById(req.params.id, (err, doc) => {
-        if (!err) {res.send(doc);}
-        else { console.log('Error in Retrieving Book :' + JSON.stringify(err, undefined, 2));}
-    });
-});
-
-router.put('/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`No record with given id : ${req.params.id}`)
-    
-    var book = {
-        title: req.body.title,
-        author: req.body.author,
-        pages: req.body.pages
-    }
-
-    Book.findByIdAndUpdate(req.params.id, {$set: book}, {new: true}, (err, doc) => {
-        if (!err) {res.send(doc);}
-        else { console.log('Error in Retrieving Book :' + JSON.stringify(err, undefined, 2));}
-    });
-});
-
-router.delete('/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`No record with given id : ${req.params.id}`)
-    
-
-
-    Book.findByIdAndRemove(req.params.id, (err, doc) => {
-        if (!err) {res.send(doc);}
-        else { console.log('Error in Retrieving Book :' + JSON.stringify(err, undefined, 2));}
     });
 });
 

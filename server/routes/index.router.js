@@ -20,16 +20,6 @@ router.get('/:id',(req, res) => {
         return res.status(400).send('No User Found');
 });
 
-router.post('/addBook', (req, res) => {
-    User.findOne({email: req.body.email}, (err, user) => {
-        if (!err) {
-            user.books.push({title: req.body.password});
-            res.send(user);}
-        else 
-            console.log(err);
-    });
-
-});
 
 
 module.exports = router;

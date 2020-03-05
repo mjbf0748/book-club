@@ -4,7 +4,7 @@ const express = require('express'); // using package
 const bodyParser = require('body-parser'); // using package to send json data
 const cors = require('cors'); // using package to communicate between appropriate ports
 const passport = require('passport'); // using package for authentication midddleware
-
+const path = require('path');
 const {mongoose} = require('./db.js'); // retrieve mongoose  property
 const rtsIndex = require('./routes/index.router');
 const rtsAccount = require('./routes/account.router');
@@ -18,6 +18,10 @@ app.use(cors());
 app.use(passport.initialize());
 app.use('/auth', rtsIndex);
 app.use('/books', rtsAccount);
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'book-club-app/src/app/index.html'));
+});
 
 // global error handler
 app.use((err, req, res, next) => {

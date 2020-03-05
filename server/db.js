@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+//'mongodb://localhost:27017/BookClub'
 
 // Connect to mongodb database Book Club
-mongoose.connect('mongodb://localhost:27017/BookClub', {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 

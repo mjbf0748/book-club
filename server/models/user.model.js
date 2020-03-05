@@ -8,6 +8,9 @@ const bookSchema = new mongoose.Schema({
     author: {type: String},
     pages: {type: Number},
     notes: {type: String},
+    coverUrl: {type: String},
+    currentPage: {type: Number},
+    completed: {type: Boolean},
 });
 
 // User schema
@@ -60,6 +63,7 @@ userSchema.methods.verifyPassword = function(password) {
     return bcrypt.compareSync(password, this.password)
 };
 
+// Method for generating JWT token by passing in id
 userSchema.methods.generateJwt =  function () {
     return jwt.sign({_id: this._id}, 
         process.env.JWT_SECRET, {
